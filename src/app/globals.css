@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --primary: #009bd9;
+  --primary-hover: #0087c0;
+  --secondary: #005681;
+  --secondary-hover: #004a6e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --font-sans: var(--font-noto-sans-jp);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+@keyframes hero-copy-in {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-copy-enter {
+  opacity: 0;
+  animation: hero-copy-in 0.3s ease-out both;
+}
+
+.hero-copy-enter-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.hero-copy-enter-delay-2 {
+  animation-delay: 0.8s;
+}
+
+.hero-copy-enter-none {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy-enter,
+  .hero-copy-enter-delay-1,
+  .hero-copy-enter-delay-2 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes carousel-ring-progress {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
