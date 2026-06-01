@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function SiteHeader() {
   return (
-    <header className="absolute inset-x-0 top-0 z-30 h-[100px] border-b border-zinc-200/80 bg-white shadow-sm">
+    <header className="absolute inset-x-0 top-0 z-30 h-[88px] border-b border-zinc-200/80 bg-white shadow-sm">
       <div className="mx-auto flex h-full w-full items-center justify-between gap-4 px-5 md:px-5">
         <Link href="/" className="inline-flex shrink-0">
           <Image
