@@ -1,8 +1,8 @@
-import { MenuButton } from '@/components/menu-button';
-import { SITE_NAV_LINKS } from '@/lib/carousel-slides';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import Link from 'next/link';
+import { MenuButton } from "@/components/menu-button";
+import { SITE_NAV_LINKS } from "@/lib/carousel-slides";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 
 export function SiteHeader() {
   return (
@@ -39,9 +39,9 @@ export function SiteHeader() {
             <Link
               href="#"
               className={cn(
-                'hidden rounded-full bg-primary px-6 py-3 text-base font-semibold whitespace-nowrap text-white md:inline-flex',
-                'shadow-sm transition-[background-color,box-shadow] duration-200',
-                'hover:bg-primary-hover hover:shadow-md',
+                "hidden rounded-full bg-primary px-6 py-3 text-base font-semibold whitespace-nowrap text-white md:inline-flex",
+                "shadow-sm transition-[background-color,box-shadow] duration-200",
+                "hover:bg-primary-hover hover:shadow-md",
               )}
             >
               お問い合わせ

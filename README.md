@@ -13,13 +13,13 @@
 
 ## 技術スタック
 
-| 項目 | 内容 |
-|------|------|
-| フレームワーク | [Next.js](https://nextjs.org/) 16（App Router） |
-| UI | React 19、Tailwind CSS v4 |
-| パッケージマネージャ | [pnpm](https://pnpm.io/) 11 |
-| フォーマット / Lint | [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)、[oxlint](https://oxc.rs/docs/guide/usage/linter.html) |
-| クラス結合 | `cn`（`clsx` + `tailwind-merge`） |
+| 項目                 | 内容                                                                                                           |
+| -------------------- | -------------------------------------------------------------------------------------------------------------- |
+| フレームワーク       | [Next.js](https://nextjs.org/) 16（App Router）                                                                |
+| UI                   | React 19、Tailwind CSS v4                                                                                      |
+| パッケージマネージャ | [pnpm](https://pnpm.io/) 11                                                                                    |
+| フォーマット / Lint  | [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)、[oxlint](https://oxc.rs/docs/guide/usage/linter.html) |
+| クラス結合           | `cn`（`clsx` + `tailwind-merge`）                                                                              |
 
 ## 必要条件
 
@@ -38,17 +38,17 @@ pnpm dev
 
 ## スクリプト
 
-| コマンド | 説明 |
-|----------|------|
-| `pnpm dev` | 開発サーバー起動 |
-| `pnpm build` | 本番ビルド |
-| `pnpm start` | 本番サーバー起動 |
-| `pnpm format` | oxfmt で整形（Tailwind クラスソート含む） |
-| `pnpm format:check` | フォーマット差分のチェック |
-| `pnpm lint` | oxlint |
-| `pnpm lint:fix` | oxlint の自動修正 |
-| `pnpm typecheck` | TypeScript の型チェック |
-| `pnpm check` | `format:check` + `lint` + `typecheck` |
+| コマンド            | 説明                                      |
+| ------------------- | ----------------------------------------- |
+| `pnpm dev`          | 開発サーバー起動                          |
+| `pnpm build`        | 本番ビルド                                |
+| `pnpm start`        | 本番サーバー起動                          |
+| `pnpm format`       | oxfmt で整形（Tailwind クラスソート含む） |
+| `pnpm format:check` | フォーマット差分のチェック                |
+| `pnpm lint`         | oxlint                                    |
+| `pnpm lint:fix`     | oxlint の自動修正                         |
+| `pnpm typecheck`    | TypeScript の型チェック                   |
+| `pnpm check`        | `format:check` + `lint` + `typecheck`     |
 
 PR 前やコミット前の確認:
 
