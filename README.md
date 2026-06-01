@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# auto-playing-carousel
 
-## Getting Started
+整備・メンテナンス業向けランディングのヒーロー領域を想定した、**自動再生フェードカルーセル**の Next.js プロトタイプです。
 
-First, run the development server:
+## 機能
+
+- フルスクリーンのヒーローカルーセル（フェード切替・10 秒間隔の自動送り）
+- 再生 / 一時停止（円形プログレス付きボタン）
+- ドットナビ・前後矢印（モバイル / デスクトップで配置を切り替え）
+- スライドごとの見出し・サブコピー・CTA
+- サイトヘッダー（ロゴ・ナビ・お問い合わせ・メニューボタン）
+- `prefers-reduced-motion` 時は自動送りとアニメーションを無効化
+
+## 技術スタック
+
+| 項目 | 内容 |
+|------|------|
+| フレームワーク | [Next.js](https://nextjs.org/) 16（App Router） |
+| UI | React 19、Tailwind CSS v4 |
+| パッケージマネージャ | [pnpm](https://pnpm.io/) 11 |
+| フォーマット / Lint | [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)、[oxlint](https://oxc.rs/docs/guide/usage/linter.html) |
+| クラス結合 | `cn`（`clsx` + `tailwind-merge`） |
+
+## 必要条件
+
+- Node.js 22 以上（推奨）
+- Corepack 有効化（`pnpm` は `package.json` の `packageManager` で固定）
+
+## セットアップ
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+corepack enable
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) を開いて表示を確認します。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## スクリプト
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| コマンド | 説明 |
+|----------|------|
+| `pnpm dev` | 開発サーバー起動 |
+| `pnpm build` | 本番ビルド |
+| `pnpm start` | 本番サーバー起動 |
+| `pnpm format` | oxfmt で整形（Tailwind クラスソート含む） |
+| `pnpm format:check` | フォーマット差分のチェック |
+| `pnpm lint` | oxlint |
+| `pnpm lint:fix` | oxlint の自動修正 |
+| `pnpm typecheck` | TypeScript の型チェック |
+| `pnpm check` | `format:check` + `lint` + `typecheck` |
 
-## Learn More
+PR 前やコミット前の確認:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm check && pnpm build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## プロジェクト構成
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── globals.css      # テーマ色・アニメーション
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── carousel-playback-button.tsx  # 再生 / 一時停止
+│   ├── hero-carousel.tsx             # ヒーロー本体
+│   ├── icons.tsx
+│   ├── menu-button.tsx
+│   └── site-header.tsx
+└── lib/
+    ├── carousel-slides.ts  # スライド・ナビ・間隔の定義
+    └── utils.ts              # cn
+public/
+├── logo.png
+└── photo1–3.avif           # ヒーロー背景画像
+```
 
-## Deploy on Vercel
+## カスタマイズ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### スライドと自動送り間隔
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`src/lib/carousel-slides.ts` を編集します。
+
+- `CAROUSEL_SLIDES` — 画像パス、`alt`、見出し行、サブコピー
+- `CAROUSEL_INTERVAL_MS` — 自動送りの間隔（ミリ秒、既定は `10000`）
+- `SITE_NAV_LINKS` — ヘッダーナビのラベルとリンク
+
+画像は `public/` に置き、`src` をパス（例: `/photo4.avif`）で指定します。
+
+### テーマカラー
+
+`src/app/globals.css` の `:root` と `@theme inline` で primary / secondary などを変更します。
+
+## エディタ（VS Code / Cursor）
+
+推奨拡張機能は `.vscode/extensions.json` を参照してください。
+
+- **Oxc** — 保存時フォーマット（oxfmt）と oxlint 修正
+- **Tailwind CSS IntelliSense** — クラス補完
+
+`.vscode/settings.json` で保存時フォーマットと oxlint 修正が有効です。oxfmt は `cn` / `clsx` 内の Tailwind クラスもソートします（`.oxfmtrc.json` の `sortTailwindcss`）。
+
+## ライセンス
+
+プライベートプロトタイプ（`package.json` の `"private": true`）。
