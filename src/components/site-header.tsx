@@ -19,9 +19,9 @@ export function SiteHeader() {
           />
         </Link>
 
-        <div className="flex items-center gap-2.5 md:gap-3 lg:gap-8">
+        <div className="flex items-center gap-2.5 md:gap-3 lg:gap-10">
           <nav
-            className="hidden items-center gap-8 text-base font-medium text-black lg:flex"
+            className="hidden items-center gap-10 text-base font-medium text-black lg:flex"
             aria-label="メインナビゲーション"
           >
             {SITE_NAV_LINKS.map((item) => (
